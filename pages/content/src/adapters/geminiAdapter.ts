@@ -16,7 +16,7 @@ import {
 import { SidebarManager } from '../components/sidebar';
 import { registerSiteAdapter } from '../utils/siteAdapter';
 import { adapterRegistry } from './adapterRegistry';
-import { initGeminiComponents, handleAutoInsert, handleAutoSubmit } from './adaptercomponents/gemini';
+import { initGeminiComponents, updateSaveState } from './adaptercomponents/gemini';
 
 export class GeminiAdapter extends BaseAdapter {
   name = 'Gemini';
@@ -54,7 +54,7 @@ export class GeminiAdapter extends BaseAdapter {
           logMessage(`URL changed from ${this.lastUrl} to ${currentUrl}`);
           this.lastUrl = currentUrl;
 
-          initGeminiComponents();
+          updateSaveState();
 
           // Check if we should show or hide the sidebar based on URL
           this.checkCurrentUrl();

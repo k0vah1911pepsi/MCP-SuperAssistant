@@ -5,7 +5,7 @@
 // import ReactDOM from 'react-dom/client';
 // import { MCPPopover } from '../../components/mcpPopover/mcpPopover';
 import type { AdapterConfig, SimpleSiteAdapter } from './common';
-import { initializeAdapter } from './common';
+import { initializeAdapter, ToggleStateManager } from './common';
 
 // Keep Gemini-specific functions or overrides
 
@@ -66,6 +66,8 @@ const geminiAdapterConfig: AdapterConfig = {
   onMCPDisabled: hideGeminiSidebar,
 };
 
+let stateManager: ToggleStateManager | null = null;
+
 // Initialize Gemini components using the common initializer
 export function initGeminiComponents(): void {
   console.debug('Initializing Gemini MCP components using common framework');
@@ -83,4 +85,8 @@ export function initGeminiComponents(): void {
   };
 
   console.debug('Gemini MCP components initialization complete.');
+}
+
+export function updateSaveState(): void {
+  stateManager.saveState();
 }
